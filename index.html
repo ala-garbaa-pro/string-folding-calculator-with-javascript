@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>String Folding calculator with JavaScript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      main {
+        display: grid;
+        place-items: center;
+        width: 100vw;
+        height: 100vh;
+        background: #f3ffec;
+      }
+
+      #keyvalue {
+        width: 100%;
+      }
+
+      .parent {
+        display: grid;
+        grid-template: auto 1fr auto / auto 1fr auto;
+        width: 33vw;
+        background: #b7ea9b;
+        border: 2px solid #537840;
+        padding: 16px;
+        border-radius: 12px;
+      }
+
+      header {
+        padding: 2rem;
+        grid-column: 1 / 4;
+      }
+
+      .left-side {
+        grid-column: 1 / 2;
+        display: grid;
+        place-items: center;
+        background: #89c76b;
+        border: 1px solid rgb(64, 101, 69);
+        height: 48px;
+        border-radius: 12px 0 0 12px;
+      }
+
+      .main-content {
+        grid-column: 2 / 3;
+      }
+
+      .right-side {
+        grid-column: 3 / 4;
+      }
+
+      footer {
+        grid-column: 1 / 4;
+        text-align: center;
+        padding-top: 16px;
+      }
+
+      #keyvalue {
+        height: 48px;
+        border: 1px solid rgb(64, 101, 69);
+        padding-left: 12px;
+      }
+
+      #keyvalue:focus {
+        outline: none !important;
+        border: 1px solid rgb(64, 101, 69);
+        box-shadow: 0 0 10px rgb(64, 101, 69);
+      }
+
+      #calculate {
+        background: #6cca3c;
+        border-radius: 0 12px 12px 0;
+        height: 48px;
+        cursor: pointer;
+        padding-inline: 12px;
+        border: 1px solid rgb(64, 101, 69);
+      }
+
+      h4 {
+        text-align: center;
+      }
+
+      h4,
+      #calculate,
+      label,
+      footer,
+      .left-side {
+        user-select: none !important;
+      }
+
+      #output {
+        border: 1px solid rgb(64, 101, 69);
+        padding: 12px;
+        margin-top: 16px;
+        background: #9ac584;
+        display: none;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      a {
+        color: rgb(64, 101, 69);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="parent">
+        <header>
+          <h4>Type a string. The sum of the ASCII values will be computed.</h4>
+        </header>
+        <div class="left-side">
+          <div class="box"><label>&nbsp;Key Value:&nbsp;</label></div>
+        </div>
+        <article class="main-content">
+          <input id="keyvalue" name="keyvalue" type="text" />
+          <p id="output"></p>
+        </article>
+        <div class="right-side">
+          <input
+            type="button"
+            id="calculate"
+            name="calculate"
+            value="Calculate"
+            onclick="Calculate()"
+          />
+        </div>
+        <footer>
+          Developed by <a href="https://www.alagarbaa.com/">Ala GARBAA</a>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      "use strict";
+      var keyvalueDOM = document.getElementById("keyvalue");
+      var outputDOM = document.getElementById("output");
+
+      function Calculate() {
+        var keyValue = keyvalueDOM.value;
+        var i;
+        var output = 0;
+        keyValue = keyValue.trim();
+        for (i = 0; i < keyValue.length; i++) {
+          output += keyValue.charCodeAt(i);
+        }
+        outputDOM.innerText = output;
+        outputDOM.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
